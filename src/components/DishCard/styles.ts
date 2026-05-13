@@ -1,14 +1,15 @@
 import styled from 'styled-components'
+import { cores } from '../../styles'
 
 export const Card = styled.div`
-  background-color: #e66767;
-  border-radius: 4px;
-  overflow: hidden;
+  background-color: ${cores.vermelho};
+  color: ${cores.bege};
 `
 
 export const Foto = styled.img`
-  width: 100%;
+  width: 304px;
   height: 167px;
+  margin: 8px;
   object-fit: cover;
 `
 
@@ -19,13 +20,11 @@ export const Infos = styled.div`
 export const Nome = styled.h3`
   font-size: 16px;
   font-weight: 900;
-  color: #fff;
   margin-bottom: 8px;
 `
 
 export const Descricao = styled.p`
   font-size: 14px;
-  color: #fff;
   line-height: 22px;
   margin-bottom: 16px;
 `

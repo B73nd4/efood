@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import fundo from '../../assets/images/fundo.png'
+import { cores } from '../../styles'
 
 export const HeaderContainer = styled.header`
   background-image: url(${fundo});
@@ -18,17 +19,16 @@ export const Logo = styled.img`
 `
 
 export const Link = styled.a`
-  color: #e66767;
+  color: ${cores.vermelho};
   font-size: 18px;
   font-weight: 900;
   text-decoration: none;
-  cursor: pointer;
 `
 
 export const Banner = styled.div`
   height: 280px;
   position: relative;
-  background-color: #000;
+  background-color: #000000ce;
 `
 
 export const BannerImage = styled.img`
@@ -40,20 +40,26 @@ export const BannerImage = styled.img`
 
 export const BannerContent = styled.div`
   position: absolute;
-  bottom: 24px;
-  left: 0;
-  right: 0;
+  inset: 0;
+
+  .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 0 32px;
+  }
 `
 
 export const Categoria = styled.span`
-  font-size: 16px;
-  color: #fff;
-  display: block;
+  font-size: 32px;
+  color: ${cores.branca};
   margin-bottom: 8px;
+  font-weight: 100;
 `
 
 export const NomeRestaurante = styled.h2`
   font-size: 32px;
   font-weight: 900;
-  color: #fff;
+  color: ${cores.branca};
 `

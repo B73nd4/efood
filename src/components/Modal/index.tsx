@@ -14,9 +14,10 @@ import {
 type Props = {
   prato: Dish
   onFechar: () => void
+  abrirCarrinho: () => void
 }
 
-const Modal = ({ prato, onFechar }: Props) => {
+const Modal = ({ prato, onFechar, abrirCarrinho }: Props) => {
   return (
     <Overlay>
       <ModalContainer>
@@ -28,6 +29,8 @@ const Modal = ({ prato, onFechar }: Props) => {
           <Porcao>Serve de 2 a 3 pessoas</Porcao>
           <Button
             titulo={`Adicionar ao carrinho - R$ ${prato.preco.toFixed(2)}`}
+            onClick={abrirCarrinho}
+            variante="bege"
           />
         </Infos>
       </ModalContainer>

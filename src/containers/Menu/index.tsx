@@ -4,9 +4,10 @@ import { Grid } from './styles'
 
 type Props = {
   pratos: Dish[]
+  abrirCarrinho: () => void
 }
 
-const Menu = ({ pratos }: Props) => {
+const Menu = ({ pratos, abrirCarrinho }: Props) => {
   return (
     <Grid>
       {pratos.map((prato) => (
@@ -17,6 +18,7 @@ const Menu = ({ pratos }: Props) => {
             descricao={prato.descricao}
             foto={prato.foto}
             preco={prato.preco}
+            abrirCarrinho={abrirCarrinho}
           />
         </li>
       ))}

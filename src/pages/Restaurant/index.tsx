@@ -1,65 +1,73 @@
+import { useState } from 'react'
+import Cart from '../../components/Cart/index'
 import ProfileHeader from '../../components/PerfilHeader'
 import Menu from '../../containers/Menu'
 import Footer from '../../components/Footer'
 import { Dish } from '../../models/Restaurant'
+
+import fotomassa1 from '../../assets/images/massa1.png'
+import banner from '../../assets/images/banner-perfil.png'
 
 const pratos: Dish[] = [
   new Dish(
     1,
     'Pizza Marguerita',
     'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite.',
-    'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400',
+    fotomassa1,
     35.9
   ),
   new Dish(
     2,
     'Pizza Marguerita',
     'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite.',
-    'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400',
+    fotomassa1,
     35.9
   ),
   new Dish(
     3,
     'Pizza Marguerita',
     'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite.',
-    'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400',
+    fotomassa1,
     35.9
   ),
   new Dish(
     4,
     'Pizza Marguerita',
     'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite.',
-    'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400',
+    fotomassa1,
     35.9
   ),
   new Dish(
     5,
     'Pizza Marguerita',
     'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite.',
-    'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400',
+    fotomassa1,
     35.9
   ),
   new Dish(
     6,
     'Pizza Marguerita',
     'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite.',
-    'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400',
+    fotomassa1,
     35.9
   )
 ]
 
 const Restaurant = () => {
+  const [cartIsOpen, setCartIsOpen] = useState(false)
+
   return (
     <>
       <ProfileHeader
         categoria="Italiana"
         nome="La Dolce Vita Trattoria"
-        capa="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200"
+        capa={banner}
       />
       <div className="container">
-        <Menu pratos={pratos} />
+        <Menu pratos={pratos} abrirCarrinho={() => setCartIsOpen(true)} />
       </div>
       <Footer />
+      <Cart isOpen={cartIsOpen} />
     </>
   )
 }

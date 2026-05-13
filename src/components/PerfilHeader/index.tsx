@@ -1,3 +1,4 @@
+import { Link as RouterLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import {
   HeaderContainer,
@@ -27,7 +28,9 @@ const ProfileHeader = ({ categoria, nome, capa }: Props) => {
         <div className="container">
           <HeaderContent>
             <Link onClick={() => navigate('/')}>Restaurantes</Link>
-            <Logo src={logo} alt="efood" />
+            <RouterLink to="/">
+              <Logo src={logo} alt="efood" />
+            </RouterLink>
             <Link>0 produto(s) no carrinho</Link>
           </HeaderContent>
         </div>

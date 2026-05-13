@@ -13,4 +13,10 @@ export const BotoesHome = styled.button<Props>`
   padding: 6px 4px;
   border: none;
   cursor: pointer;
+
+  &.bege {
+    background-color: ${cores.bege};
+    color: ${cores.vermelho};
+    padding: 4px 83px;
+  }
 `

@@ -34,7 +34,7 @@ const RestaurantCard = ({
           <Nota>{nota} ⭐</Nota>
         </NotaContainer>
         <Descricao>{descricao}</Descricao>
-        <Link to={`/restaurant/${id}`}>
+        <Link to={`/restaurante/${id}`}>
           <Button titulo="Saiba mais" />
         </Link>
       </Infos>

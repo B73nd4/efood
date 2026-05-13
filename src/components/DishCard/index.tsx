@@ -4,26 +4,49 @@ import Button from '../Button'
 import Modal from '../Modal'
 import { Card, Foto, Infos, Nome, Descricao } from './styles'
 
-const DishCard = ({ id, nome, descricao, foto, preco }: Dish) => {
+type Props = Dish & {
+  abrirCarrinho: () => void
+}
+
+const DishCard = ({
+  id,
+  nome,
+  descricao,
+  foto,
+  preco,
+  abrirCarrinho
+}: Props) => {
   const [modalAberto, setModalAberto] = useState(false)
 
   return (
     <>
       <Card>
         <Foto src={foto} alt={nome} />
+
         <Infos>
           <Nome>{nome}</Nome>
+
           <Descricao>{descricao}</Descricao>
+
           <Button
             titulo="Adicionar ao carrinho"
             onClick={() => setModalAberto(true)}
+            variante="bege"
           />
         </Infos>
       </Card>
+
       {modalAberto && (
         <Modal
-          prato={new Dish(id, nome, descricao, foto, preco)}
+          prato={{
+            id,
+            nome,
+            descricao,
+            foto,
+            preco
+          }}
           onFechar={() => setModalAberto(false)}
+          abrirCarrinho={abrirCarrinho}
         />
       )}
     </>
