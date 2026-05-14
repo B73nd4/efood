@@ -14,6 +14,7 @@ const DishCard = ({
   descricao,
   foto,
   preco,
+  porcao,
   abrirCarrinho
 }: Props) => {
   const [modalAberto, setModalAberto] = useState(false)
@@ -43,7 +44,8 @@ const DishCard = ({
             nome,
             descricao,
             foto,
-            preco
+            preco,
+            porcao
           }}
           onFechar={() => setModalAberto(false)}
           abrirCarrinho={abrirCarrinho}

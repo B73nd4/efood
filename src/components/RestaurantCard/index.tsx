@@ -15,8 +15,8 @@ import {
 const RestaurantCard = ({
   id,
   titulo,
-  categoria,
-  nota,
+  tipo,
+  avaliacao,
   descricao,
   capa,
   destacado
@@ -26,12 +26,12 @@ const RestaurantCard = ({
       <Capa src={capa} alt={titulo} />
       <TagsContainer>
         {destacado && <Button titulo="Destaque da semana" fontSize={10} />}
-        <Button titulo={categoria} fontSize={10} />
+        <Button titulo={tipo} fontSize={10} />
       </TagsContainer>
       <Infos>
         <NotaContainer>
           <Nome>{titulo}</Nome>
-          <Nota>{nota} ⭐</Nota>
+          <Nota>{avaliacao} ⭐</Nota>
         </NotaContainer>
         <Descricao>{descricao}</Descricao>
         <Link to={`/restaurante/${id}`}>

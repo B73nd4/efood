@@ -1,70 +1,45 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import Cart from '../../components/Cart/index'
 import ProfileHeader from '../../components/PerfilHeader'
 import Menu from '../../containers/Menu'
 import Footer from '../../components/Footer'
-import { Dish } from '../../models/Restaurant'
-
-import fotomassa1 from '../../assets/images/massa1.png'
-import banner from '../../assets/images/banner-perfil.png'
-
-const pratos: Dish[] = [
-  new Dish(
-    1,
-    'Pizza Marguerita',
-    'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite.',
-    fotomassa1,
-    35.9
-  ),
-  new Dish(
-    2,
-    'Pizza Marguerita',
-    'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite.',
-    fotomassa1,
-    35.9
-  ),
-  new Dish(
-    3,
-    'Pizza Marguerita',
-    'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite.',
-    fotomassa1,
-    35.9
-  ),
-  new Dish(
-    4,
-    'Pizza Marguerita',
-    'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite.',
-    fotomassa1,
-    35.9
-  ),
-  new Dish(
-    5,
-    'Pizza Marguerita',
-    'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite.',
-    fotomassa1,
-    35.9
-  ),
-  new Dish(
-    6,
-    'Pizza Marguerita',
-    'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite.',
-    fotomassa1,
-    35.9
-  )
-]
 
 const Restaurant = () => {
+  const { id } = useParams()
+
+  const [restaurant, setRestaurant] = useState<any>()
+
   const [cartIsOpen, setCartIsOpen] = useState(false)
+
+  useEffect(() => {
+    fetch('https://api-ebac.vercel.app/api/efood/restaurantes')
+      .then((resposta) => resposta.json())
+      .then((resposta) => {
+        const restauranteAtual = resposta.find(
+          (item: any) => item.id === Number(id)
+        )
+
+        setRestaurant(restauranteAtual)
+      })
+  }, [id])
+
+  if (!restaurant) {
+    return <h2>Carregando...</h2>
+  }
 
   return (
     <>
       <ProfileHeader
-        categoria="Italiana"
-        nome="La Dolce Vita Trattoria"
-        capa={banner}
+        categoria={restaurant.tipo}
+        nome={restaurant.titulo}
+        capa={restaurant.capa}
       />
       <div className="container">
-        <Menu pratos={pratos} abrirCarrinho={() => setCartIsOpen(true)} />
+        <Menu
+          pratos={restaurant.cardapio}
+          abrirCarrinho={() => setCartIsOpen(true)}
+        />{' '}
       </div>
       <Footer />
       <Cart isOpen={cartIsOpen} />

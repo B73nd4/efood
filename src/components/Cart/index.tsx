@@ -83,7 +83,7 @@ const Cart = ({ isOpen }: Props) => {
                 <input type="text" />
               </S.InputGroup>
 
-              <S.InputGroup small>
+              <S.InputGroup $small>
                 <label>Número</label>
                 <input type="text" />
               </S.InputGroup>

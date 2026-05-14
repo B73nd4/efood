@@ -84,14 +84,13 @@ export const Title = styled.h2`
   margin-bottom: 16px;
 `
 
-export const InputGroup = styled.div<{ small?: boolean }>`
+export const InputGroup = styled.div<{ $small?: boolean }>`
   display: flex;
   flex-direction: column;
 
   margin-bottom: 8px;
 
-  width: ${(props) => (props.small ? '155px' : '100%')};
-
+  width: ${(props) => (props.$small ? '155px' : '100%')};
   label {
     color: #ffebd9;
     font-size: 14px;

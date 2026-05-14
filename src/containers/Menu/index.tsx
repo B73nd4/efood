@@ -18,6 +18,7 @@ const Menu = ({ pratos, abrirCarrinho }: Props) => {
             descricao={prato.descricao}
             foto={prato.foto}
             preco={prato.preco}
+            porcao={prato.porcao}
             abrirCarrinho={abrirCarrinho}
           />
         </li>
