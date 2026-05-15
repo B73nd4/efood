@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { cores } from '../../styles'
 
 export const Overlay = styled.div`
   position: fixed;
@@ -13,7 +14,7 @@ export const Overlay = styled.div`
 
 export const Sidebar = styled.aside`
   width: 360px;
-  background-color: #e66767;
+  background-color: ${cores.vermelho};
 
   padding: 16px 8px;
 
@@ -21,7 +22,7 @@ export const Sidebar = styled.aside`
 `
 
 export const CartItem = styled.div`
-  background-color: #ffebd9;
+  background-color: ${cores.bege};
 
   display: flex;
   gap: 8px;
@@ -37,14 +38,14 @@ export const CartItem = styled.div`
 
   h3 {
     font-size: 18px;
-    color: #e66767;
+    color: ${cores.vermelho};
 
     margin-bottom: 16px;
   }
 
   span {
     font-size: 14px;
-    color: #e66767;
+    color: ${cores.vermelho};
   }
 `
 
@@ -52,7 +53,7 @@ export const Total = styled.div`
   display: flex;
   justify-content: space-between;
 
-  color: #ffebd9;
+  color: ${cores.bege};
 
   font-size: 14px;
   font-weight: bold;
@@ -66,8 +67,8 @@ export const Button = styled.button`
 
   border: none;
 
-  background-color: #ffebd9;
-  color: #e66767;
+  background-color: ${cores.bege};
+  color: ${cores.vermelho};
 
   font-size: 14px;
   font-weight: bold;
@@ -80,7 +81,7 @@ export const Button = styled.button`
 export const Title = styled.h2`
   font-size: 16px;
   font-weight: bold;
-  color: #ffebd9;
+  color: ${cores.bege};
   margin-bottom: 16px;
 `
 
@@ -92,7 +93,7 @@ export const InputGroup = styled.div<{ $small?: boolean }>`
 
   width: ${(props) => (props.$small ? '155px' : '100%')};
   label {
-    color: #ffebd9;
+    color: ${cores.bege};
     font-size: 14px;
     font-weight: bold;
 
@@ -104,7 +105,7 @@ export const InputGroup = styled.div<{ $small?: boolean }>`
 
     border: none;
 
-    background-color: #ffebd9;
+    background-color: ${cores.bege};
 
     padding: 0 8px;
   }
@@ -119,7 +120,11 @@ export const Text = styled.p`
   font-size: 14px;
   line-height: 22px;
 
-  color: #ffebd9;
+  color: ${cores.bege};
 
   margin-bottom: 24px;
+`
+export const CartList = styled.div`
+  display: flex;
+  flex-direction: column;
 `

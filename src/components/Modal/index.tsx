@@ -1,3 +1,6 @@
+import { useDispatch } from 'react-redux'
+import { adicionar, abrir } from '../../store/reducers/carrinho'
+
 import { Dish } from '../../models/Restaurant'
 import Button from '../Button'
 import {
@@ -14,10 +17,11 @@ import {
 type Props = {
   prato: Dish
   onFechar: () => void
-  abrirCarrinho: () => void
 }
 
-const Modal = ({ prato, onFechar, abrirCarrinho }: Props) => {
+const Modal = ({ prato, onFechar }: Props) => {
+  const dispatch = useDispatch()
+
   return (
     <Overlay>
       <ModalContainer>
@@ -29,7 +33,18 @@ const Modal = ({ prato, onFechar, abrirCarrinho }: Props) => {
           <Porcao>Serve de 2 a 3 pessoas</Porcao>
           <Button
             titulo={`Adicionar ao carrinho - R$ ${prato.preco.toFixed(2)}`}
-            onClick={abrirCarrinho}
+            onClick={() => {
+              dispatch(
+                adicionar({
+                  id: prato.id,
+                  nome: prato.nome,
+                  foto: prato.foto,
+                  preco: prato.preco
+                })
+              )
+              dispatch(abrir())
+              onFechar()
+            }}
             variante="bege"
           />
         </Infos>

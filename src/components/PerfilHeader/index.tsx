@@ -1,3 +1,6 @@
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store'
+
 import { Link as RouterLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import {
@@ -22,6 +25,8 @@ type Props = {
 const ProfileHeader = ({ categoria, nome, capa }: Props) => {
   const navigate = useNavigate()
 
+  const { itens } = useSelector((state: RootState) => state.carrinho)
+
   return (
     <>
       <HeaderContainer>
@@ -31,7 +36,7 @@ const ProfileHeader = ({ categoria, nome, capa }: Props) => {
             <RouterLink to="/">
               <Logo src={logo} alt="efood" />
             </RouterLink>
-            <Link>0 produto(s) no carrinho</Link>
+            <Link>{itens.length} produto(s) no carrinho</Link>
           </HeaderContent>
         </div>
       </HeaderContainer>

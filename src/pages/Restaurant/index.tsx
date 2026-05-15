@@ -10,8 +10,6 @@ const Restaurant = () => {
 
   const [restaurant, setRestaurant] = useState<any>()
 
-  const [cartIsOpen, setCartIsOpen] = useState(false)
-
   useEffect(() => {
     fetch('https://api-ebac.vercel.app/api/efood/restaurantes')
       .then((resposta) => resposta.json())
@@ -36,13 +34,10 @@ const Restaurant = () => {
         capa={restaurant.capa}
       />
       <div className="container">
-        <Menu
-          pratos={restaurant.cardapio}
-          abrirCarrinho={() => setCartIsOpen(true)}
-        />{' '}
+        <Menu pratos={restaurant.cardapio} />{' '}
       </div>
       <Footer />
-      <Cart isOpen={cartIsOpen} />
+      <Cart />
     </>
   )
 }

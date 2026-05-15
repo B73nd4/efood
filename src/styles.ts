@@ -27,7 +27,6 @@ export const GlobalCss = createGlobalStyle`
     margin: 0 auto;
   }
   `
-
 /*
 body: #FFF8F2 bege #FFEBD9
 font e detalhes: #E66767

@@ -1,55 +1,61 @@
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../store'
+import { fechar } from '../../store/reducers/carrinho'
+
 import { useState } from 'react'
 import * as S from './styles'
 import { useNavigate } from 'react-router-dom'
 
-import massa1 from '../../assets/images/massa1.png'
-
-type Props = {
-  isOpen: boolean
-}
-
-const Cart = ({ isOpen }: Props) => {
+const Cart = () => {
   const [etapa, setEtapa] = useState<
     'cart' | 'delivery' | 'payment' | 'confirmation'
   >('cart')
-
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { itens, aberto } = useSelector((state: RootState) => state.carrinho)
 
-  if (!isOpen) return null
+  const fecharCarrinho = () => {
+    dispatch(fechar())
+    setEtapa('cart')
+  }
+
+  const valorTotal = itens.reduce((acc, item) => {
+    return acc + item.preco
+  }, 0)
+
+  if (!aberto) return null
 
   return (
-    <S.Overlay>
-      <S.Sidebar>
+    <S.Overlay onClick={fecharCarrinho}>
+      <S.Sidebar onClick={(e) => e.stopPropagation()}>
         {etapa === 'cart' && (
           <>
-            <S.CartItem>
-              <img src={massa1} alt="Pizza" />
+            <S.CartList>
+              {itens.map((item) => (
+                <S.CartItem key={item.id}>
+                  <img src={item.foto} alt={item.nome} />
 
-              <div>
-                <h3>Pizza Marguerita</h3>
-                <span>R$ 60,90</span>
-              </div>
-            </S.CartItem>
-            <S.CartItem>
-              <img src={massa1} alt="Pizza" />
+                  <div>
+                    <h3>{item.nome}</h3>
 
-              <div>
-                <h3>Pizza Marguerita</h3>
-                <span>R$ 60,90</span>
-              </div>
-            </S.CartItem>
-            <S.CartItem>
-              <img src={massa1} alt="Pizza" />
-
-              <div>
-                <h3>Pizza Marguerita</h3>
-                <span>R$ 60,90</span>
-              </div>
-            </S.CartItem>
-
+                    <span>
+                      {item.preco.toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL'
+                      })}
+                    </span>
+                  </div>
+                </S.CartItem>
+              ))}
+            </S.CartList>
             <S.Total>
               <p>Valor total</p>
-              <span>R$ 182,70</span>
+              <span>
+                {valorTotal.toLocaleString('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL'
+                })}
+              </span>
             </S.Total>
 
             <S.Button onClick={() => setEtapa('delivery')}>
@@ -153,7 +159,7 @@ const Cart = ({ isOpen }: Props) => {
               Gostaríamos de ressaltar que nossos entregadores não estão
               autorizados a realizar cobranças extras.
             </S.Text>
-            <S.Button onClick={() => navigate('/')}>Concluir</S.Button>
+            <S.Button onClick={fecharCarrinho}>Concluir</S.Button>
           </>
         )}
       </S.Sidebar>

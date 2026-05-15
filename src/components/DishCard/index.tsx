@@ -4,19 +4,9 @@ import Button from '../Button'
 import Modal from '../Modal'
 import { Card, Foto, Infos, Nome, Descricao } from './styles'
 
-type Props = Dish & {
-  abrirCarrinho: () => void
-}
+type Props = Dish
 
-const DishCard = ({
-  id,
-  nome,
-  descricao,
-  foto,
-  preco,
-  porcao,
-  abrirCarrinho
-}: Props) => {
+const DishCard = ({ id, nome, descricao, foto, preco, porcao }: Props) => {
   const [modalAberto, setModalAberto] = useState(false)
 
   return (
@@ -48,7 +38,6 @@ const DishCard = ({
             porcao
           }}
           onFechar={() => setModalAberto(false)}
-          abrirCarrinho={abrirCarrinho}
         />
       )}
     </>
