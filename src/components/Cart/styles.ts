@@ -85,35 +85,32 @@ export const Title = styled.h2`
   margin-bottom: 16px;
 `
 
-export const InputGroup = styled.div<{ $small?: boolean }>`
+export const InputGroup = styled.div<{
+  $width?: string
+  $marginBottom?: string
+}>`
   display: flex;
   flex-direction: column;
-
-  margin-bottom: 8px;
-
-  width: ${(props) => (props.$small ? '155px' : '100%')};
+  margin-bottom: ${(props) => props.$marginBottom || '8px'};
+  width: ${(props) => props.$width || '100%'};
   label {
     color: ${cores.bege};
     font-size: 14px;
     font-weight: bold;
-
     margin-bottom: 8px;
   }
 
   input {
     height: 32px;
-
     border: none;
-
     background-color: ${cores.bege};
-
     padding: 0 8px;
   }
 `
 
 export const Row = styled.div`
   display: flex;
-  gap: 8px;
+  justify-content: space-between;
 `
 
 export const Text = styled.p`
