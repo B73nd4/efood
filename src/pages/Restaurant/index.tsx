@@ -4,18 +4,19 @@ import Cart from '../../components/Cart/index'
 import ProfileHeader from '../../components/PerfilHeader'
 import Menu from '../../containers/Menu'
 import Footer from '../../components/Footer'
+import { Restaurant as RestaurantType } from '../../models/Restaurant'
 
 const Restaurant = () => {
   const { id } = useParams()
 
-  const [restaurant, setRestaurant] = useState<any>()
+  const [restaurant, setRestaurant] = useState<RestaurantType>()
 
   useEffect(() => {
     fetch('https://api-ebac.vercel.app/api/efood/restaurantes')
       .then((resposta) => resposta.json())
       .then((resposta) => {
         const restauranteAtual = resposta.find(
-          (item: any) => item.id === Number(id)
+          (item: RestaurantType) => item.id === Number(id)
         )
 
         setRestaurant(restauranteAtual)

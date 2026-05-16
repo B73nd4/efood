@@ -4,13 +4,11 @@ import { fechar } from '../../store/reducers/carrinho'
 
 import { useState } from 'react'
 import * as S from './styles'
-import { useNavigate } from 'react-router-dom'
 
 const Cart = () => {
   const [etapa, setEtapa] = useState<
     'cart' | 'delivery' | 'payment' | 'confirmation'
   >('cart')
-  const navigate = useNavigate()
   const dispatch = useDispatch()
   const { itens, aberto } = useSelector((state: RootState) => state.carrinho)
 
