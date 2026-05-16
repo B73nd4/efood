@@ -1,4 +1,4 @@
-export const enviarPedido = async (payload: any) => {
+export const enviarPedido = async (payload: unknown) => {
   const response = await fetch(
     'https://api-ebac.vercel.app/api/efood/checkout',
     {
