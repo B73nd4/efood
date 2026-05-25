@@ -23,6 +23,7 @@ export const Sidebar = styled.aside`
 
 export const CartItem = styled.div`
   background-color: ${cores.bege};
+  position: relative;
 
   display: flex;
   gap: 8px;
@@ -83,6 +84,20 @@ export const Title = styled.h2`
   font-weight: bold;
   color: ${cores.bege};
   margin-bottom: 16px;
+`
+
+export const RemoveButton = styled.button`
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
 `
 
 export const InputGroup = styled.div<{ $small?: boolean }>`

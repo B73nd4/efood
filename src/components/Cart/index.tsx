@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../store'
-import { fechar } from '../../store/reducers/carrinho'
+import { fechar, remover } from '../../store/reducers/carrinho'
+import lixo from '../../assets/images/lixeira.png'
 
 import { useState } from 'react'
 import * as S from './styles'
@@ -43,6 +44,9 @@ const Cart = () => {
                       })}
                     </span>
                   </div>
+                  <S.RemoveButton onClick={() => dispatch(remover(item.id))}>
+                    <img src={lixo} alt="Remover item" />
+                  </S.RemoveButton>
                 </S.CartItem>
               ))}
             </S.CartList>
