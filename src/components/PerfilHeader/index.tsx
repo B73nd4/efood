@@ -1,5 +1,6 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../store'
+import { abrir } from '../../store/reducers/carrinho'
 
 import { Link as RouterLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
@@ -24,6 +25,7 @@ type Props = {
 
 const ProfileHeader = ({ categoria, nome, capa }: Props) => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const { itens } = useSelector((state: RootState) => state.carrinho)
 
@@ -36,7 +38,9 @@ const ProfileHeader = ({ categoria, nome, capa }: Props) => {
             <RouterLink to="/">
               <Logo src={logo} alt="efood" />
             </RouterLink>
-            <Link>{itens.length} produto(s) no carrinho</Link>
+            <Link onClick={() => dispatch(abrir())}>
+              {itens.length} produto(s) no carrinho
+            </Link>
           </HeaderContent>
         </div>
       </HeaderContainer>

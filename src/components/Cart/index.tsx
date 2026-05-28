@@ -1,12 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { enviarPedido } from '../../services/api'
 import { RootState } from '../../store'
-import { fechar } from '../../store/reducers/carrinho'
+import { fechar, remover } from '../../store/reducers/carrinho'
+import lixo from '../../assets/images/lixeira.png'
+
 import { useState } from 'react'
 import * as S from './styles'
 
 const Cart = () => {
-  const [etapa, setEtapa] = useState('cart')
+  const [etapa, setEtapa] = useState<
+    'cart' | 'delivery' | 'payment' | 'confirmation'
+  >('cart')
+
   const [pedidoId, setPedidoId] = useState('')
 
   const [nomeRecebedor, setNomeRecebedor] = useState('')
@@ -93,6 +98,9 @@ const Cart = () => {
                       })}
                     </span>
                   </div>
+                  <S.RemoveButton onClick={() => dispatch(remover(item.id))}>
+                    <img src={lixo} alt="Remover item" />
+                  </S.RemoveButton>
                 </S.CartItem>
               ))}
             </S.CartList>
