@@ -144,3 +144,9 @@ export const CartList = styled.div`
   display: flex;
   flex-direction: column;
 `
+
+export const ErrorMsg = styled.span`
+  color: #ffcccc;
+  font-size: 11px;
+  margin-top: 4px;
+`
